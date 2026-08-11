@@ -1,0 +1,17 @@
+// Copy the relevant values into ~/.openclaw/openclaw.json
+// This file intentionally contains no credential.
+{
+  agents: {
+    defaults: {
+      workspace: "~/.openclaw/workspace-term",
+      model: {
+        // Higher capability. Change to a supported model from the onboarding picker
+        // if you prefer a lower-cost default.
+        primary: "anthropic/claude-opus-4-6"
+      },
+      heartbeat: {
+        every: "0m"
+      }
+    }
+  }
+}
