@@ -1067,6 +1067,7 @@
               {
                 "group": "Extensions",
                 "pages": [
+                  "plugins/registry",
                   "plugins/community",
                   "plugins/voice-call",
                   "plugins/zalouser",

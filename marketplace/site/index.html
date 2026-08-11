@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenClaw Extension Marketplace</title>
+    <meta
+      name="description"
+      content="Free, open registry of OpenClaw plugins — channels, providers, and community extensions. No selling, just discovery."
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f7f7f8;
+        --bg-elevated: #ffffff;
+        --text: #1a1a1e;
+        --text-muted: #5c5c66;
+        --border: #e2e2e6;
+        --accent: #6d4bff;
+        --accent-contrast: #ffffff;
+        --badge-channel: #1f7a4d;
+        --badge-provider: #1f5fa8;
+        --badge-other: #7a5a1f;
+        --badge-community: #a8341f;
+        --shadow: 0 1px 2px rgba(20, 20, 30, 0.06), 0 1px 12px rgba(20, 20, 30, 0.04);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121214;
+          --bg-elevated: #1c1c20;
+          --text: #f0f0f2;
+          --text-muted: #a3a3ad;
+          --border: #2c2c32;
+          --accent: #9c85ff;
+          --accent-contrast: #14121f;
+          --badge-channel: #59d693;
+          --badge-provider: #6fb2ff;
+          --badge-other: #e0b95c;
+          --badge-community: #ff8a72;
+          --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 16px rgba(0, 0, 0, 0.3);
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+      }
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 2.5rem 1.25rem 4rem;
+      }
+      header.hero h1 {
+        font-size: clamp(1.8rem, 3vw, 2.4rem);
+        margin: 0 0 0.4rem;
+        letter-spacing: -0.02em;
+      }
+      header.hero p {
+        color: var(--text-muted);
+        max-width: 62ch;
+        margin: 0 0 1.5rem;
+      }
+      .badge-free {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--accent);
+        border: 1px solid var(--accent);
+        border-radius: 999px;
+        padding: 0.15rem 0.6rem;
+        margin-bottom: 0.9rem;
+      }
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+      }
+      .stat {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 0.6rem 1rem;
+        min-width: 96px;
+        box-shadow: var(--shadow);
+      }
+      .stat .n {
+        font-size: 1.35rem;
+        font-weight: 700;
+      }
+      .stat .l {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        align-items: center;
+        margin-bottom: 1.75rem;
+        position: sticky;
+        top: 0;
+        background: var(--bg);
+        padding: 0.75rem 0;
+        z-index: 5;
+      }
+      #search {
+        flex: 1 1 240px;
+        padding: 0.55rem 0.85rem;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--bg-elevated);
+        color: var(--text);
+        font-size: 0.95rem;
+      }
+      #search:focus {
+        outline: 2px solid var(--accent);
+        outline-offset: 1px;
+      }
+      .filter-btn {
+        border: 1px solid var(--border);
+        background: var(--bg-elevated);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 0.4rem 0.9rem;
+        font-size: 0.85rem;
+        cursor: pointer;
+      }
+      .filter-btn[aria-pressed="true"] {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--accent-contrast);
+      }
+      h2.section-title {
+        font-size: 1.1rem;
+        margin: 2.2rem 0 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .count-pill {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 0.9rem;
+      }
+      .card {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1rem 1.1rem;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .card h3 {
+        margin: 0;
+        font-size: 1.02rem;
+      }
+      .card .id {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+      .card p {
+        margin: 0;
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        flex: 1;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+      }
+      .tag {
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        padding: 0.15rem 0.5rem;
+        border-radius: 999px;
+        color: var(--accent-contrast);
+      }
+      .tag.channel {
+        background: var(--badge-channel);
+      }
+      .tag.provider {
+        background: var(--badge-provider);
+      }
+      .tag.other {
+        background: var(--badge-other);
+      }
+      .tag.community {
+        background: var(--badge-community);
+      }
+      .meta-line {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+      }
+      .meta-line code {
+        background: var(--bg);
+        border-radius: 4px;
+        padding: 0.05rem 0.35rem;
+      }
+      .meta-line a {
+        color: var(--accent);
+      }
+      .empty-state {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        padding: 1.5rem 0;
+      }
+      footer {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+      footer a {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hero">
+        <span class="badge-free">Free &middot; No selling &middot; Just discovery</span>
+        <h1>OpenClaw Extension Marketplace</h1>
+        <p>
+          A registry of OpenClaw plugins — channels, providers, and other extensions bundled with
+          this repo, plus community-maintained plugins published on npm. For skills (the shareable
+          agent-capability bundles), see
+          <a href="https://clawhub.ai" target="_blank" rel="noreferrer">ClawHub</a>, OpenClaw's
+          existing public skill registry.
+        </p>
+      </header>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="controls">
+        <input id="search" type="search" placeholder="Search plugins by name, id, or tag…" />
+        <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-filter="channel" aria-pressed="false">Channels</button>
+        <button class="filter-btn" data-filter="provider" aria-pressed="false">Providers</button>
+        <button class="filter-btn" data-filter="other" aria-pressed="false">Other</button>
+        <button class="filter-btn" data-filter="community" aria-pressed="false">Community</button>
+      </div>
+
+      <h2 class="section-title">
+        Bundled plugins <span class="count-pill" id="bundled-count"></span>
+      </h2>
+      <div class="grid" id="bundled-grid"></div>
+      <p class="empty-state" id="bundled-empty" hidden>No bundled plugins match your search.</p>
+
+      <h2 class="section-title">
+        Community plugins <span class="count-pill" id="community-count"></span>
+      </h2>
+      <div class="grid" id="community-grid"></div>
+      <p class="empty-state" id="community-empty" hidden>No community plugins match your search.</p>
+
+      <footer>
+        <p>
+          Want to publish a plugin here? See
+          <a
+            href="https://github.com/b19557311-cpu/openclaw-zero-token/blob/main/docs/plugins/community.md"
+            target="_blank"
+            rel="noreferrer"
+            >docs/plugins/community.md</a
+          >
+          for the submission bar and PR path. Building a bundled plugin instead? Start with
+          <a
+            href="https://github.com/b19557311-cpu/openclaw-zero-token/blob/main/docs/plugins/manifest.md"
+            target="_blank"
+            rel="noreferrer"
+            >the plugin manifest docs</a
+          >.
+        </p>
+        <p id="generated-at"></p>
+      </footer>
+    </div>
+
+    <script>
+      const REGISTRY = {"generatedAt":"2026-08-11T18:37:46.933Z","counts":{"bundled":83,"channels":21,"providers":36,"other":26,"community":1},"bundled":[{"id":"acpx","name":"ACPX Runtime","description":"ACP runtime backend powered by acpx with configurable command path and version policy.","version":"2026.3.28","category":"other","tags":["skills"],"dir":"extensions/acpx","packageName":"@openclaw/acpx","enabledByDefault":false},{"id":"amazon-bedrock","name":"Amazon Bedrock","description":"OpenClaw Amazon Bedrock provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/amazon-bedrock","packageName":"@openclaw/amazon-bedrock-provider","enabledByDefault":true},{"id":"anthropic","name":"Anthropic","description":"OpenClaw Anthropic provider plugin","version":"2026.3.28","category":"provider","tags":["provider","cli-backend"],"dir":"extensions/anthropic","packageName":"@openclaw/anthropic-provider","enabledByDefault":true},{"id":"askonce","name":"AskOnce","description":"一次提问，获取所有大模型答案 - Query multiple AI models simultaneously with a single question","version":"2026.3.12","category":"other","tags":["other"],"dir":"extensions/askonce","packageName":"@openclaw/askonce","enabledByDefault":false},{"id":"bluebubbles","name":"Bluebubbles","description":"OpenClaw BlueBubbles channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/bluebubbles","packageName":"@openclaw/bluebubbles","enabledByDefault":false},{"id":"brave","name":"Brave","description":"OpenClaw Brave plugin","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/brave","packageName":"@openclaw/brave-plugin","enabledByDefault":false},{"id":"browser","name":"Browser","description":"OpenClaw browser tool plugin","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/browser","packageName":"@openclaw/browser-plugin","enabledByDefault":true},{"id":"byteplus","name":"Byteplus","description":"OpenClaw BytePlus provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/byteplus","packageName":"@openclaw/byteplus-provider","enabledByDefault":true},{"id":"chutes","name":"Chutes","description":"OpenClaw Chutes.ai provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/chutes","packageName":"@openclaw/chutes-provider","enabledByDefault":true},{"id":"cloudflare-ai-gateway","name":"Cloudflare Ai Gateway","description":"OpenClaw Cloudflare AI Gateway provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/cloudflare-ai-gateway","packageName":"@openclaw/cloudflare-ai-gateway-provider","enabledByDefault":true},{"id":"copilot-proxy","name":"Copilot Proxy","description":"OpenClaw Copilot Proxy provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/copilot-proxy","packageName":"@openclaw/copilot-proxy","enabledByDefault":true},{"id":"deepgram","name":"Deepgram","description":"OpenClaw Deepgram media-understanding provider","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/deepgram","packageName":"@openclaw/deepgram-provider","enabledByDefault":false},{"id":"deepseek","name":"Deepseek","description":"OpenClaw DeepSeek provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/deepseek","packageName":"@openclaw/deepseek-provider","enabledByDefault":true},{"id":"device-pair","name":"Device Pairing","description":"Generate setup codes and approve device pairing requests.","version":null,"category":"other","tags":["other"],"dir":"extensions/device-pair","packageName":null,"enabledByDefault":true},{"id":"diagnostics-otel","name":"Diagnostics Otel","description":"OpenClaw diagnostics OpenTelemetry exporter","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/diagnostics-otel","packageName":"@openclaw/diagnostics-otel","enabledByDefault":false},{"id":"diffs","name":"Diffs","description":"Read-only diff viewer and file renderer for agents.","version":"2026.3.28","category":"other","tags":["skills"],"dir":"extensions/diffs","packageName":"@openclaw/diffs","enabledByDefault":false},{"id":"discord","name":"Discord","description":"OpenClaw Discord channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/discord","packageName":"@openclaw/discord","enabledByDefault":false},{"id":"duckduckgo","name":"Duckduckgo","description":"OpenClaw DuckDuckGo plugin","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/duckduckgo","packageName":"@openclaw/duckduckgo-plugin","enabledByDefault":false},{"id":"elevenlabs","name":"Elevenlabs","description":"OpenClaw ElevenLabs speech plugin","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/elevenlabs","packageName":"@openclaw/elevenlabs-speech","enabledByDefault":false},{"id":"exa","name":"Exa","description":"OpenClaw Exa plugin","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/exa","packageName":"@openclaw/exa-plugin","enabledByDefault":false},{"id":"fal","name":"Fal","description":"OpenClaw fal provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/fal","packageName":"@openclaw/fal-provider","enabledByDefault":true},{"id":"feishu","name":"Feishu","description":"OpenClaw Feishu/Lark channel plugin (community maintained by @m1heng)","version":"2026.3.28","category":"channel","tags":["channel","skills"],"dir":"extensions/feishu","packageName":"@openclaw/feishu","enabledByDefault":false},{"id":"firecrawl","name":"Firecrawl","description":"OpenClaw Firecrawl plugin","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/firecrawl","packageName":"@openclaw/firecrawl-plugin","enabledByDefault":false},{"id":"github-copilot","name":"Github Copilot","description":"OpenClaw GitHub Copilot provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/github-copilot","packageName":"@openclaw/github-copilot-provider","enabledByDefault":true},{"id":"google","name":"Google","description":"OpenClaw Google plugin","version":"2026.3.28","category":"provider","tags":["provider","cli-backend"],"dir":"extensions/google","packageName":"@openclaw/google-plugin","enabledByDefault":true},{"id":"googlechat","name":"Googlechat","description":"OpenClaw Google Chat channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/googlechat","packageName":"@openclaw/googlechat","enabledByDefault":false},{"id":"groq","name":"Groq","description":"OpenClaw Groq media-understanding provider","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/groq","packageName":"@openclaw/groq-provider","enabledByDefault":false},{"id":"huggingface","name":"Huggingface","description":"OpenClaw Hugging Face provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/huggingface","packageName":"@openclaw/huggingface-provider","enabledByDefault":true},{"id":"imessage","name":"Imessage","description":"OpenClaw iMessage channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/imessage","packageName":"@openclaw/imessage","enabledByDefault":false},{"id":"irc","name":"Irc","description":"OpenClaw IRC channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/irc","packageName":"@openclaw/irc","enabledByDefault":false},{"id":"kilocode","name":"Kilocode","description":"OpenClaw Kilo Gateway provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/kilocode","packageName":"@openclaw/kilocode-provider","enabledByDefault":true},{"id":"kimi","name":"Kimi","description":"OpenClaw Kimi provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/kimi-coding","packageName":"@openclaw/kimi-provider","enabledByDefault":true},{"id":"line","name":"Line","description":"OpenClaw LINE channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/line","packageName":"@openclaw/line","enabledByDefault":false},{"id":"litellm","name":"Litellm","description":"OpenClaw LiteLLM provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/litellm","packageName":"@openclaw/litellm-provider","enabledByDefault":true},{"id":"llm-task","name":"LLM Task","description":"Generic JSON-only LLM tool for structured tasks callable from workflows.","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/llm-task","packageName":"@openclaw/llm-task","enabledByDefault":false},{"id":"lobster","name":"Lobster","description":"Typed workflow tool with resumable approvals.","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/lobster","packageName":"@openclaw/lobster","enabledByDefault":false},{"id":"matrix","name":"Matrix","description":"OpenClaw Matrix channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/matrix","packageName":"@openclaw/matrix","enabledByDefault":false},{"id":"mattermost","name":"Mattermost","description":"OpenClaw Mattermost channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/mattermost","packageName":"@openclaw/mattermost","enabledByDefault":false},{"id":"memory-core","name":"Memory Core","description":"OpenClaw core memory search plugin","version":"2026.3.28","category":"other","tags":["memory"],"dir":"extensions/memory-core","packageName":"@openclaw/memory-core","enabledByDefault":false},{"id":"memory-lancedb","name":"Memory Lancedb","description":"OpenClaw LanceDB-backed long-term memory plugin with auto-recall/capture","version":"2026.3.28","category":"other","tags":["memory"],"dir":"extensions/memory-lancedb","packageName":"@openclaw/memory-lancedb","enabledByDefault":false},{"id":"microsoft","name":"Microsoft","description":"OpenClaw Microsoft speech plugin","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/microsoft","packageName":"@openclaw/microsoft-speech","enabledByDefault":false},{"id":"microsoft-foundry","name":"Microsoft Foundry","description":"OpenClaw Microsoft Foundry provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/microsoft-foundry","packageName":"@openclaw/microsoft-foundry","enabledByDefault":true},{"id":"minimax","name":"Minimax","description":"OpenClaw MiniMax provider and OAuth plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/minimax","packageName":"@openclaw/minimax-provider","enabledByDefault":true},{"id":"mistral","name":"Mistral","description":"OpenClaw Mistral provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/mistral","packageName":"@openclaw/mistral-provider","enabledByDefault":true},{"id":"modelstudio","name":"Modelstudio","description":"OpenClaw Model Studio provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/modelstudio","packageName":"@openclaw/modelstudio-provider","enabledByDefault":true},{"id":"moonshot","name":"Moonshot","description":"OpenClaw Moonshot provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/moonshot","packageName":"@openclaw/moonshot-provider","enabledByDefault":true},{"id":"msteams","name":"Msteams","description":"OpenClaw Microsoft Teams channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/msteams","packageName":"@openclaw/msteams","enabledByDefault":false},{"id":"nextcloud-talk","name":"Nextcloud Talk","description":"OpenClaw Nextcloud Talk channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/nextcloud-talk","packageName":"@openclaw/nextcloud-talk","enabledByDefault":false},{"id":"nostr","name":"Nostr","description":"OpenClaw Nostr channel plugin for NIP-04 encrypted DMs","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/nostr","packageName":"@openclaw/nostr","enabledByDefault":false},{"id":"nvidia","name":"Nvidia","description":"OpenClaw NVIDIA provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/nvidia","packageName":"@openclaw/nvidia-provider","enabledByDefault":true},{"id":"ollama","name":"Ollama","description":"OpenClaw Ollama provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/ollama","packageName":"@openclaw/ollama-provider","enabledByDefault":true},{"id":"open-prose","name":"OpenProse","description":"OpenProse VM skill pack with a /prose slash command.","version":"2026.3.28","category":"other","tags":["skills"],"dir":"extensions/open-prose","packageName":"@openclaw/open-prose","enabledByDefault":false},{"id":"openai","name":"Openai","description":"OpenClaw OpenAI provider plugins","version":"2026.3.28","category":"provider","tags":["provider","cli-backend"],"dir":"extensions/openai","packageName":"@openclaw/openai-provider","enabledByDefault":true},{"id":"opencode","name":"Opencode","description":"OpenClaw OpenCode Zen provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/opencode","packageName":"@openclaw/opencode-provider","enabledByDefault":true},{"id":"opencode-go","name":"Opencode Go","description":"OpenClaw OpenCode Go provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/opencode-go","packageName":"@openclaw/opencode-go-provider","enabledByDefault":true},{"id":"openrouter","name":"Openrouter","description":"OpenClaw OpenRouter provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/openrouter","packageName":"@openclaw/openrouter-provider","enabledByDefault":true},{"id":"openshell","name":"OpenShell Sandbox","description":"Sandbox backend powered by OpenShell with mirrored local workspaces and SSH-based command execution.","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/openshell","packageName":"@openclaw/openshell-sandbox","enabledByDefault":false},{"id":"perplexity","name":"Perplexity","description":"OpenClaw Perplexity plugin","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/perplexity","packageName":"@openclaw/perplexity-plugin","enabledByDefault":false},{"id":"phone-control","name":"Phone Control","description":"Arm/disarm high-risk phone node commands (camera/screen/writes) with an optional auto-expiry.","version":null,"category":"other","tags":["other"],"dir":"extensions/phone-control","packageName":null,"enabledByDefault":true},{"id":"qianfan","name":"Qianfan","description":"OpenClaw Qianfan provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/qianfan","packageName":"@openclaw/qianfan-provider","enabledByDefault":true},{"id":"sglang","name":"Sglang","description":"OpenClaw SGLang provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/sglang","packageName":"@openclaw/sglang-provider","enabledByDefault":true},{"id":"signal","name":"Signal","description":"OpenClaw Signal channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/signal","packageName":"@openclaw/signal","enabledByDefault":false},{"id":"slack","name":"Slack","description":"OpenClaw Slack channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/slack","packageName":"@openclaw/slack","enabledByDefault":false},{"id":"synology-chat","name":"Synology Chat","description":"Synology Chat channel plugin for OpenClaw","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/synology-chat","packageName":"@openclaw/synology-chat","enabledByDefault":false},{"id":"synthetic","name":"Synthetic","description":"OpenClaw Synthetic provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/synthetic","packageName":"@openclaw/synthetic-provider","enabledByDefault":true},{"id":"talk-voice","name":"Talk Voice","description":"Manage Talk voice selection (list/set).","version":null,"category":"other","tags":["other"],"dir":"extensions/talk-voice","packageName":null,"enabledByDefault":true},{"id":"tavily","name":"Tavily","description":"OpenClaw Tavily plugin","version":"2026.3.28","category":"other","tags":["skills"],"dir":"extensions/tavily","packageName":"@openclaw/tavily-plugin","enabledByDefault":false},{"id":"telegram","name":"Telegram","description":"OpenClaw Telegram channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/telegram","packageName":"@openclaw/telegram","enabledByDefault":false},{"id":"thread-ownership","name":"Thread Ownership","description":"Prevents multiple agents from responding in the same Slack thread. Uses HTTP calls to the slack-forwarder ownership API.","version":null,"category":"other","tags":["other"],"dir":"extensions/thread-ownership","packageName":null,"enabledByDefault":false},{"id":"tlon","name":"Tlon","description":"OpenClaw Tlon/Urbit channel plugin","version":"2026.3.28","category":"channel","tags":["channel","skills"],"dir":"extensions/tlon","packageName":"@openclaw/tlon","enabledByDefault":false},{"id":"together","name":"Together","description":"OpenClaw Together provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/together","packageName":"@openclaw/together-provider","enabledByDefault":true},{"id":"twitch","name":"Twitch","description":"OpenClaw Twitch channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/twitch","packageName":"@openclaw/twitch","enabledByDefault":false},{"id":"venice","name":"Venice","description":"OpenClaw Venice provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/venice","packageName":"@openclaw/venice-provider","enabledByDefault":true},{"id":"vercel-ai-gateway","name":"Vercel Ai Gateway","description":"OpenClaw Vercel AI Gateway provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/vercel-ai-gateway","packageName":"@openclaw/vercel-ai-gateway-provider","enabledByDefault":true},{"id":"vllm","name":"Vllm","description":"OpenClaw vLLM provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/vllm","packageName":"@openclaw/vllm-provider","enabledByDefault":true},{"id":"voice-call","name":"Voice Call","description":"OpenClaw voice-call plugin","version":"2026.3.28","category":"other","tags":["other"],"dir":"extensions/voice-call","packageName":"@openclaw/voice-call","enabledByDefault":false},{"id":"volcengine","name":"Volcengine","description":"OpenClaw Volcengine provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/volcengine","packageName":"@openclaw/volcengine-provider","enabledByDefault":true},{"id":"whatsapp","name":"Whatsapp","description":"OpenClaw WhatsApp channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/whatsapp","packageName":"@openclaw/whatsapp","enabledByDefault":false},{"id":"xai","name":"Xai","description":"OpenClaw xAI plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/xai","packageName":"@openclaw/xai-plugin","enabledByDefault":true},{"id":"xiaomi","name":"Xiaomi","description":"OpenClaw Xiaomi provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/xiaomi","packageName":"@openclaw/xiaomi-provider","enabledByDefault":true},{"id":"zai","name":"Zai","description":"OpenClaw Z.AI provider plugin","version":"2026.3.28","category":"provider","tags":["provider"],"dir":"extensions/zai","packageName":"@openclaw/zai-provider","enabledByDefault":true},{"id":"zalo","name":"Zalo","description":"OpenClaw Zalo channel plugin","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/zalo","packageName":"@openclaw/zalo","enabledByDefault":false},{"id":"zalouser","name":"Zalouser","description":"OpenClaw Zalo Personal Account plugin via native zca-js integration","version":"2026.3.28","category":"channel","tags":["channel"],"dir":"extensions/zalouser","packageName":"@openclaw/zalouser","enabledByDefault":false}],"community":[{"name":"WeChat","description":"Connect OpenClaw to WeChat personal accounts via WeChatPadPro (iPad protocol). Supports text, image, and file exchange with keyword-triggered conversations.","npm":"@icesword760/openclaw-wechat","repo":"https://github.com/icesword0760/openclaw-wechat","install":"openclaw plugins install @icesword760/openclaw-wechat"}]};
+
+      function el(tag, className, children) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        for (const child of children || []) {
+          if (child == null) continue;
+          node.append(child);
+        }
+        return node;
+      }
+
+      function text(str) {
+        return document.createTextNode(str);
+      }
+
+      function bundledCard(entry) {
+        const tagEls = entry.tags.map((tag) => {
+          const known = ["channel", "provider", "other"].includes(tag) ? tag : "other";
+          return el("span", "tag " + known, [text(tag)]);
+        });
+        const metaBits = [];
+        if (entry.version) metaBits.push("v" + entry.version);
+        metaBits.push(entry.dir);
+        return el("article", "card", [
+          el("h3", null, [text(entry.name)]),
+          el("div", "id", [text(entry.id)]),
+          el("p", null, [text(entry.description || "No description provided.")]),
+          el("div", "tags", tagEls),
+          el("div", "meta-line", [text(metaBits.join(" · "))]),
+        ]);
+      }
+
+      function communityCard(entry) {
+        const links = [];
+        if (entry.npm) links.push(el("span", null, [text("npm: "), el("code", null, [text(entry.npm)])]));
+        if (entry.install)
+          links.push(el("span", null, [text("install: "), el("code", null, [text(entry.install)])]));
+        if (entry.repo) {
+          const a = el("a", null, [text("source")]);
+          a.href = entry.repo;
+          a.target = "_blank";
+          a.rel = "noreferrer";
+          links.push(a);
+        }
+        const metaLine = el("div", "meta-line", []);
+        links.forEach((node, i) => {
+          if (i > 0) metaLine.append(text("  ·  "));
+          metaLine.append(node);
+        });
+        return el("article", "card", [
+          el("h3", null, [text(entry.name)]),
+          el("span", "tag community", [text("community")]),
+          el("p", null, [text(entry.description || "")]),
+          metaLine,
+        ]);
+      }
+
+      function matches(query, haystackParts) {
+        if (!query) return true;
+        const q = query.toLowerCase();
+        return haystackParts.some((part) => (part || "").toLowerCase().includes(q));
+      }
+
+      function render() {
+        const query = document.getElementById("search").value.trim();
+        const activeFilter = document.querySelector(".filter-btn[aria-pressed='true']").dataset
+          .filter;
+
+        const bundledGrid = document.getElementById("bundled-grid");
+        const communityGrid = document.getElementById("community-grid");
+        bundledGrid.replaceChildren();
+        communityGrid.replaceChildren();
+
+        const showBundled = activeFilter === "all" || activeFilter !== "community";
+        const showCommunity = activeFilter === "all" || activeFilter === "community";
+
+        let bundledShown = 0;
+        if (showBundled) {
+          for (const entry of REGISTRY.bundled) {
+            if (activeFilter !== "all" && activeFilter !== "community" && entry.category !== activeFilter)
+              continue;
+            if (!matches(query, [entry.id, entry.name, entry.description, ...entry.tags])) continue;
+            bundledGrid.append(bundledCard(entry));
+            bundledShown += 1;
+          }
+        }
+        document.getElementById("bundled-empty").hidden = bundledShown !== 0;
+        document.getElementById("bundled-count").textContent = "(" + bundledShown + ")";
+
+        let communityShown = 0;
+        if (showCommunity) {
+          for (const entry of REGISTRY.community) {
+            if (!matches(query, [entry.name, entry.description, entry.npm])) continue;
+            communityGrid.append(communityCard(entry));
+            communityShown += 1;
+          }
+        }
+        document.getElementById("community-empty").hidden = communityShown !== 0;
+        document.getElementById("community-count").textContent = "(" + communityShown + ")";
+      }
+
+      function renderStats() {
+        const statsEl = document.getElementById("stats");
+        const stats = [
+          ["Bundled", REGISTRY.counts.bundled],
+          ["Channels", REGISTRY.counts.channels],
+          ["Providers", REGISTRY.counts.providers],
+          ["Other", REGISTRY.counts.other],
+          ["Community", REGISTRY.counts.community],
+        ];
+        for (const [label, n] of stats) {
+          statsEl.append(
+            el("div", "stat", [el("div", "n", [text(String(n))]), el("div", "l", [text(label)])]),
+          );
+        }
+      }
+
+      document.getElementById("search").addEventListener("input", render);
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach((b) => b.setAttribute("aria-pressed", "false"));
+          btn.setAttribute("aria-pressed", "true");
+          render();
+        });
+      });
+
+      renderStats();
+      render();
+      document.getElementById("generated-at").textContent =
+        "Registry generated " + new Date(REGISTRY.generatedAt).toLocaleString() +
+        ". Rebuild with `pnpm marketplace:build`.";
+    </script>
+  </body>
+</html>
