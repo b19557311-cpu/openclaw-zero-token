@@ -1,0 +1,1105 @@
+{
+  "generatedAt": "2026-08-11T18:37:46.933Z",
+  "counts": {
+    "bundled": 83,
+    "channels": 21,
+    "providers": 36,
+    "other": 26,
+    "community": 1
+  },
+  "bundled": [
+    {
+      "id": "acpx",
+      "name": "ACPX Runtime",
+      "description": "ACP runtime backend powered by acpx with configurable command path and version policy.",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "skills"
+      ],
+      "dir": "extensions/acpx",
+      "packageName": "@openclaw/acpx",
+      "enabledByDefault": false
+    },
+    {
+      "id": "amazon-bedrock",
+      "name": "Amazon Bedrock",
+      "description": "OpenClaw Amazon Bedrock provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/amazon-bedrock",
+      "packageName": "@openclaw/amazon-bedrock-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "description": "OpenClaw Anthropic provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider",
+        "cli-backend"
+      ],
+      "dir": "extensions/anthropic",
+      "packageName": "@openclaw/anthropic-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "askonce",
+      "name": "AskOnce",
+      "description": "一次提问，获取所有大模型答案 - Query multiple AI models simultaneously with a single question",
+      "version": "2026.3.12",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/askonce",
+      "packageName": "@openclaw/askonce",
+      "enabledByDefault": false
+    },
+    {
+      "id": "bluebubbles",
+      "name": "Bluebubbles",
+      "description": "OpenClaw BlueBubbles channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/bluebubbles",
+      "packageName": "@openclaw/bluebubbles",
+      "enabledByDefault": false
+    },
+    {
+      "id": "brave",
+      "name": "Brave",
+      "description": "OpenClaw Brave plugin",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/brave",
+      "packageName": "@openclaw/brave-plugin",
+      "enabledByDefault": false
+    },
+    {
+      "id": "browser",
+      "name": "Browser",
+      "description": "OpenClaw browser tool plugin",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/browser",
+      "packageName": "@openclaw/browser-plugin",
+      "enabledByDefault": true
+    },
+    {
+      "id": "byteplus",
+      "name": "Byteplus",
+      "description": "OpenClaw BytePlus provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/byteplus",
+      "packageName": "@openclaw/byteplus-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "chutes",
+      "name": "Chutes",
+      "description": "OpenClaw Chutes.ai provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/chutes",
+      "packageName": "@openclaw/chutes-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "cloudflare-ai-gateway",
+      "name": "Cloudflare Ai Gateway",
+      "description": "OpenClaw Cloudflare AI Gateway provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/cloudflare-ai-gateway",
+      "packageName": "@openclaw/cloudflare-ai-gateway-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "copilot-proxy",
+      "name": "Copilot Proxy",
+      "description": "OpenClaw Copilot Proxy provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/copilot-proxy",
+      "packageName": "@openclaw/copilot-proxy",
+      "enabledByDefault": true
+    },
+    {
+      "id": "deepgram",
+      "name": "Deepgram",
+      "description": "OpenClaw Deepgram media-understanding provider",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/deepgram",
+      "packageName": "@openclaw/deepgram-provider",
+      "enabledByDefault": false
+    },
+    {
+      "id": "deepseek",
+      "name": "Deepseek",
+      "description": "OpenClaw DeepSeek provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/deepseek",
+      "packageName": "@openclaw/deepseek-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "device-pair",
+      "name": "Device Pairing",
+      "description": "Generate setup codes and approve device pairing requests.",
+      "version": null,
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/device-pair",
+      "packageName": null,
+      "enabledByDefault": true
+    },
+    {
+      "id": "diagnostics-otel",
+      "name": "Diagnostics Otel",
+      "description": "OpenClaw diagnostics OpenTelemetry exporter",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/diagnostics-otel",
+      "packageName": "@openclaw/diagnostics-otel",
+      "enabledByDefault": false
+    },
+    {
+      "id": "diffs",
+      "name": "Diffs",
+      "description": "Read-only diff viewer and file renderer for agents.",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "skills"
+      ],
+      "dir": "extensions/diffs",
+      "packageName": "@openclaw/diffs",
+      "enabledByDefault": false
+    },
+    {
+      "id": "discord",
+      "name": "Discord",
+      "description": "OpenClaw Discord channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/discord",
+      "packageName": "@openclaw/discord",
+      "enabledByDefault": false
+    },
+    {
+      "id": "duckduckgo",
+      "name": "Duckduckgo",
+      "description": "OpenClaw DuckDuckGo plugin",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/duckduckgo",
+      "packageName": "@openclaw/duckduckgo-plugin",
+      "enabledByDefault": false
+    },
+    {
+      "id": "elevenlabs",
+      "name": "Elevenlabs",
+      "description": "OpenClaw ElevenLabs speech plugin",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/elevenlabs",
+      "packageName": "@openclaw/elevenlabs-speech",
+      "enabledByDefault": false
+    },
+    {
+      "id": "exa",
+      "name": "Exa",
+      "description": "OpenClaw Exa plugin",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/exa",
+      "packageName": "@openclaw/exa-plugin",
+      "enabledByDefault": false
+    },
+    {
+      "id": "fal",
+      "name": "Fal",
+      "description": "OpenClaw fal provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/fal",
+      "packageName": "@openclaw/fal-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "feishu",
+      "name": "Feishu",
+      "description": "OpenClaw Feishu/Lark channel plugin (community maintained by @m1heng)",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel",
+        "skills"
+      ],
+      "dir": "extensions/feishu",
+      "packageName": "@openclaw/feishu",
+      "enabledByDefault": false
+    },
+    {
+      "id": "firecrawl",
+      "name": "Firecrawl",
+      "description": "OpenClaw Firecrawl plugin",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/firecrawl",
+      "packageName": "@openclaw/firecrawl-plugin",
+      "enabledByDefault": false
+    },
+    {
+      "id": "github-copilot",
+      "name": "Github Copilot",
+      "description": "OpenClaw GitHub Copilot provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/github-copilot",
+      "packageName": "@openclaw/github-copilot-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "google",
+      "name": "Google",
+      "description": "OpenClaw Google plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider",
+        "cli-backend"
+      ],
+      "dir": "extensions/google",
+      "packageName": "@openclaw/google-plugin",
+      "enabledByDefault": true
+    },
+    {
+      "id": "googlechat",
+      "name": "Googlechat",
+      "description": "OpenClaw Google Chat channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/googlechat",
+      "packageName": "@openclaw/googlechat",
+      "enabledByDefault": false
+    },
+    {
+      "id": "groq",
+      "name": "Groq",
+      "description": "OpenClaw Groq media-understanding provider",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/groq",
+      "packageName": "@openclaw/groq-provider",
+      "enabledByDefault": false
+    },
+    {
+      "id": "huggingface",
+      "name": "Huggingface",
+      "description": "OpenClaw Hugging Face provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/huggingface",
+      "packageName": "@openclaw/huggingface-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "imessage",
+      "name": "Imessage",
+      "description": "OpenClaw iMessage channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/imessage",
+      "packageName": "@openclaw/imessage",
+      "enabledByDefault": false
+    },
+    {
+      "id": "irc",
+      "name": "Irc",
+      "description": "OpenClaw IRC channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/irc",
+      "packageName": "@openclaw/irc",
+      "enabledByDefault": false
+    },
+    {
+      "id": "kilocode",
+      "name": "Kilocode",
+      "description": "OpenClaw Kilo Gateway provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/kilocode",
+      "packageName": "@openclaw/kilocode-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "kimi",
+      "name": "Kimi",
+      "description": "OpenClaw Kimi provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/kimi-coding",
+      "packageName": "@openclaw/kimi-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "line",
+      "name": "Line",
+      "description": "OpenClaw LINE channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/line",
+      "packageName": "@openclaw/line",
+      "enabledByDefault": false
+    },
+    {
+      "id": "litellm",
+      "name": "Litellm",
+      "description": "OpenClaw LiteLLM provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/litellm",
+      "packageName": "@openclaw/litellm-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "llm-task",
+      "name": "LLM Task",
+      "description": "Generic JSON-only LLM tool for structured tasks callable from workflows.",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/llm-task",
+      "packageName": "@openclaw/llm-task",
+      "enabledByDefault": false
+    },
+    {
+      "id": "lobster",
+      "name": "Lobster",
+      "description": "Typed workflow tool with resumable approvals.",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/lobster",
+      "packageName": "@openclaw/lobster",
+      "enabledByDefault": false
+    },
+    {
+      "id": "matrix",
+      "name": "Matrix",
+      "description": "OpenClaw Matrix channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/matrix",
+      "packageName": "@openclaw/matrix",
+      "enabledByDefault": false
+    },
+    {
+      "id": "mattermost",
+      "name": "Mattermost",
+      "description": "OpenClaw Mattermost channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/mattermost",
+      "packageName": "@openclaw/mattermost",
+      "enabledByDefault": false
+    },
+    {
+      "id": "memory-core",
+      "name": "Memory Core",
+      "description": "OpenClaw core memory search plugin",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "memory"
+      ],
+      "dir": "extensions/memory-core",
+      "packageName": "@openclaw/memory-core",
+      "enabledByDefault": false
+    },
+    {
+      "id": "memory-lancedb",
+      "name": "Memory Lancedb",
+      "description": "OpenClaw LanceDB-backed long-term memory plugin with auto-recall/capture",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "memory"
+      ],
+      "dir": "extensions/memory-lancedb",
+      "packageName": "@openclaw/memory-lancedb",
+      "enabledByDefault": false
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "description": "OpenClaw Microsoft speech plugin",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/microsoft",
+      "packageName": "@openclaw/microsoft-speech",
+      "enabledByDefault": false
+    },
+    {
+      "id": "microsoft-foundry",
+      "name": "Microsoft Foundry",
+      "description": "OpenClaw Microsoft Foundry provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/microsoft-foundry",
+      "packageName": "@openclaw/microsoft-foundry",
+      "enabledByDefault": true
+    },
+    {
+      "id": "minimax",
+      "name": "Minimax",
+      "description": "OpenClaw MiniMax provider and OAuth plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/minimax",
+      "packageName": "@openclaw/minimax-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral",
+      "description": "OpenClaw Mistral provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/mistral",
+      "packageName": "@openclaw/mistral-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "modelstudio",
+      "name": "Modelstudio",
+      "description": "OpenClaw Model Studio provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/modelstudio",
+      "packageName": "@openclaw/modelstudio-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "moonshot",
+      "name": "Moonshot",
+      "description": "OpenClaw Moonshot provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/moonshot",
+      "packageName": "@openclaw/moonshot-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "msteams",
+      "name": "Msteams",
+      "description": "OpenClaw Microsoft Teams channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/msteams",
+      "packageName": "@openclaw/msteams",
+      "enabledByDefault": false
+    },
+    {
+      "id": "nextcloud-talk",
+      "name": "Nextcloud Talk",
+      "description": "OpenClaw Nextcloud Talk channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/nextcloud-talk",
+      "packageName": "@openclaw/nextcloud-talk",
+      "enabledByDefault": false
+    },
+    {
+      "id": "nostr",
+      "name": "Nostr",
+      "description": "OpenClaw Nostr channel plugin for NIP-04 encrypted DMs",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/nostr",
+      "packageName": "@openclaw/nostr",
+      "enabledByDefault": false
+    },
+    {
+      "id": "nvidia",
+      "name": "Nvidia",
+      "description": "OpenClaw NVIDIA provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/nvidia",
+      "packageName": "@openclaw/nvidia-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "description": "OpenClaw Ollama provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/ollama",
+      "packageName": "@openclaw/ollama-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "open-prose",
+      "name": "OpenProse",
+      "description": "OpenProse VM skill pack with a /prose slash command.",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "skills"
+      ],
+      "dir": "extensions/open-prose",
+      "packageName": "@openclaw/open-prose",
+      "enabledByDefault": false
+    },
+    {
+      "id": "openai",
+      "name": "Openai",
+      "description": "OpenClaw OpenAI provider plugins",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider",
+        "cli-backend"
+      ],
+      "dir": "extensions/openai",
+      "packageName": "@openclaw/openai-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "opencode",
+      "name": "Opencode",
+      "description": "OpenClaw OpenCode Zen provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/opencode",
+      "packageName": "@openclaw/opencode-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "opencode-go",
+      "name": "Opencode Go",
+      "description": "OpenClaw OpenCode Go provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/opencode-go",
+      "packageName": "@openclaw/opencode-go-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "openrouter",
+      "name": "Openrouter",
+      "description": "OpenClaw OpenRouter provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/openrouter",
+      "packageName": "@openclaw/openrouter-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "openshell",
+      "name": "OpenShell Sandbox",
+      "description": "Sandbox backend powered by OpenShell with mirrored local workspaces and SSH-based command execution.",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/openshell",
+      "packageName": "@openclaw/openshell-sandbox",
+      "enabledByDefault": false
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "description": "OpenClaw Perplexity plugin",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/perplexity",
+      "packageName": "@openclaw/perplexity-plugin",
+      "enabledByDefault": false
+    },
+    {
+      "id": "phone-control",
+      "name": "Phone Control",
+      "description": "Arm/disarm high-risk phone node commands (camera/screen/writes) with an optional auto-expiry.",
+      "version": null,
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/phone-control",
+      "packageName": null,
+      "enabledByDefault": true
+    },
+    {
+      "id": "qianfan",
+      "name": "Qianfan",
+      "description": "OpenClaw Qianfan provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/qianfan",
+      "packageName": "@openclaw/qianfan-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "sglang",
+      "name": "Sglang",
+      "description": "OpenClaw SGLang provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/sglang",
+      "packageName": "@openclaw/sglang-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "signal",
+      "name": "Signal",
+      "description": "OpenClaw Signal channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/signal",
+      "packageName": "@openclaw/signal",
+      "enabledByDefault": false
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "description": "OpenClaw Slack channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/slack",
+      "packageName": "@openclaw/slack",
+      "enabledByDefault": false
+    },
+    {
+      "id": "synology-chat",
+      "name": "Synology Chat",
+      "description": "Synology Chat channel plugin for OpenClaw",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/synology-chat",
+      "packageName": "@openclaw/synology-chat",
+      "enabledByDefault": false
+    },
+    {
+      "id": "synthetic",
+      "name": "Synthetic",
+      "description": "OpenClaw Synthetic provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/synthetic",
+      "packageName": "@openclaw/synthetic-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "talk-voice",
+      "name": "Talk Voice",
+      "description": "Manage Talk voice selection (list/set).",
+      "version": null,
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/talk-voice",
+      "packageName": null,
+      "enabledByDefault": true
+    },
+    {
+      "id": "tavily",
+      "name": "Tavily",
+      "description": "OpenClaw Tavily plugin",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "skills"
+      ],
+      "dir": "extensions/tavily",
+      "packageName": "@openclaw/tavily-plugin",
+      "enabledByDefault": false
+    },
+    {
+      "id": "telegram",
+      "name": "Telegram",
+      "description": "OpenClaw Telegram channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/telegram",
+      "packageName": "@openclaw/telegram",
+      "enabledByDefault": false
+    },
+    {
+      "id": "thread-ownership",
+      "name": "Thread Ownership",
+      "description": "Prevents multiple agents from responding in the same Slack thread. Uses HTTP calls to the slack-forwarder ownership API.",
+      "version": null,
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/thread-ownership",
+      "packageName": null,
+      "enabledByDefault": false
+    },
+    {
+      "id": "tlon",
+      "name": "Tlon",
+      "description": "OpenClaw Tlon/Urbit channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel",
+        "skills"
+      ],
+      "dir": "extensions/tlon",
+      "packageName": "@openclaw/tlon",
+      "enabledByDefault": false
+    },
+    {
+      "id": "together",
+      "name": "Together",
+      "description": "OpenClaw Together provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/together",
+      "packageName": "@openclaw/together-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "twitch",
+      "name": "Twitch",
+      "description": "OpenClaw Twitch channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/twitch",
+      "packageName": "@openclaw/twitch",
+      "enabledByDefault": false
+    },
+    {
+      "id": "venice",
+      "name": "Venice",
+      "description": "OpenClaw Venice provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/venice",
+      "packageName": "@openclaw/venice-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "vercel-ai-gateway",
+      "name": "Vercel Ai Gateway",
+      "description": "OpenClaw Vercel AI Gateway provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/vercel-ai-gateway",
+      "packageName": "@openclaw/vercel-ai-gateway-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "vllm",
+      "name": "Vllm",
+      "description": "OpenClaw vLLM provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/vllm",
+      "packageName": "@openclaw/vllm-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "voice-call",
+      "name": "Voice Call",
+      "description": "OpenClaw voice-call plugin",
+      "version": "2026.3.28",
+      "category": "other",
+      "tags": [
+        "other"
+      ],
+      "dir": "extensions/voice-call",
+      "packageName": "@openclaw/voice-call",
+      "enabledByDefault": false
+    },
+    {
+      "id": "volcengine",
+      "name": "Volcengine",
+      "description": "OpenClaw Volcengine provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/volcengine",
+      "packageName": "@openclaw/volcengine-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "whatsapp",
+      "name": "Whatsapp",
+      "description": "OpenClaw WhatsApp channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/whatsapp",
+      "packageName": "@openclaw/whatsapp",
+      "enabledByDefault": false
+    },
+    {
+      "id": "xai",
+      "name": "Xai",
+      "description": "OpenClaw xAI plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/xai",
+      "packageName": "@openclaw/xai-plugin",
+      "enabledByDefault": true
+    },
+    {
+      "id": "xiaomi",
+      "name": "Xiaomi",
+      "description": "OpenClaw Xiaomi provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/xiaomi",
+      "packageName": "@openclaw/xiaomi-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "zai",
+      "name": "Zai",
+      "description": "OpenClaw Z.AI provider plugin",
+      "version": "2026.3.28",
+      "category": "provider",
+      "tags": [
+        "provider"
+      ],
+      "dir": "extensions/zai",
+      "packageName": "@openclaw/zai-provider",
+      "enabledByDefault": true
+    },
+    {
+      "id": "zalo",
+      "name": "Zalo",
+      "description": "OpenClaw Zalo channel plugin",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/zalo",
+      "packageName": "@openclaw/zalo",
+      "enabledByDefault": false
+    },
+    {
+      "id": "zalouser",
+      "name": "Zalouser",
+      "description": "OpenClaw Zalo Personal Account plugin via native zca-js integration",
+      "version": "2026.3.28",
+      "category": "channel",
+      "tags": [
+        "channel"
+      ],
+      "dir": "extensions/zalouser",
+      "packageName": "@openclaw/zalouser",
+      "enabledByDefault": false
+    }
+  ],
+  "community": [
+    {
+      "name": "WeChat",
+      "description": "Connect OpenClaw to WeChat personal accounts via WeChatPadPro (iPad protocol). Supports text, image, and file exchange with keyword-triggered conversations.",
+      "npm": "@icesword760/openclaw-wechat",
+      "repo": "https://github.com/icesword0760/openclaw-wechat",
+      "install": "openclaw plugins install @icesword760/openclaw-wechat"
+    }
+  ]
+}

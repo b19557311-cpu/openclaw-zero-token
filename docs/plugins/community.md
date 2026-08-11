@@ -11,6 +11,9 @@ title: "Community plugins"
 This page tracks high-quality **community-maintained plugins** for OpenClaw.
 
 We accept PRs that add community plugins here when they meet the quality bar.
+Entries on this page are picked up automatically by the
+[Extension Marketplace](/plugins/registry), a free browsable site listing
+every OpenClaw plugin — bundled and community — side by side.
 
 ## Required for listing
 
